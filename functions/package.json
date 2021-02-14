@@ -1,0 +1,21 @@
+{
+  "name": "amazon-clone",
+  "version": "1.0.0",
+  "description": "node js payment",
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "stripe": "^8.135.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": "12.18.1"
+  }
+}
