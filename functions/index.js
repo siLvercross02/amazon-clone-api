@@ -3,6 +3,10 @@ const cors = require('cors');
 const { response } = require('express');
 const stripe = require('stripe')('sk_test_51I7ZtwJfIWiE56ZraREu1D0FeObnBDVPhuTmBTtGkVTH40MNJuvyRgGVauqXfzAMXjbLyl2jnHr4MPyNJmnp0K2M00qqBjWAVk');
 
+// port
+let port = process.env.PORT || 5000;
+
+
 // API
 
 // App Config
@@ -33,6 +37,6 @@ app.post('/payments/create', async(request, response) => {
     });
 });
 
-app.listen(5000, () => console.log('Server Starting on Port 5000'))
+app.listen(port, () => console.log('Server Starting on Port 5000'))
 
 module.exports = app;
