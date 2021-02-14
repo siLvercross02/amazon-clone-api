@@ -4,7 +4,7 @@ const { response } = require('express');
 const stripe = require('stripe')('sk_test_51I7ZtwJfIWiE56ZraREu1D0FeObnBDVPhuTmBTtGkVTH40MNJuvyRgGVauqXfzAMXjbLyl2jnHr4MPyNJmnp0K2M00qqBjWAVk');
 
 // port
-let port = process.env.PORT || 5000;
+let port = process.env.PORT || 8080;
 
 
 // API
@@ -19,22 +19,27 @@ app.use(express.json());
 // API Test Routes 1
 app.get('/', (request, response) => response.status(200).send('Test Routes'));
 
-app.get('/test', (request, response) => response.status(200).send('Test Routes 1'));
+app.get('/test', (request, response) => response.status(200).send(console.log('test 1')));
 
-app.post('/payments/create', async(request, response) => {
+app.post('/test-post', async (request, response ) => {
+    console.log('test post');
+});
+
+app.post('/payments/create', async (request, response) => {
     const total = request.query.total;
 
-    console.log('Payment Request Received', total);
+    console.log('Payment Request Received + ', total);
 
-    const paymentIntent = await stripe.paymentIntent.create({
+    const paymentIntent =  await stripe.paymentIntents.create({
         amount: total,
         currency: 'usd',
     });
 
-    // Ok - created
+   // Ok - created
     response.status(201).send({
         clientSecret: paymentIntent.client_secret,
     });
+
 });
 
 app.listen(port, () => console.log('Server Starting on Port 5000'))
