@@ -12,8 +12,10 @@ const app = express();
 app.use(cors({ origin: true }));
 app.use(express.json());
 
-// API Test Routes
+// API Test Routes 1
 app.get('/', (request, response) => response.status(200).send('Test Routes'));
+
+app.get('/test', (request, response) => response.status(200).send('Test Routes 1'));
 
 app.post('/payments/create', async(request, response) => {
     const total = request.query.total;
